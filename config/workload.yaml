@@ -1,0 +1,23 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: customer-profile
+  labels:
+    app.kubernetes.io/part-of: customer-profile
+    apps.tanzu.vmware.com/workload-type: web
+#    apps.tanzu.vmware.com/has-tests: true
+#    apps.tanzu.vmware.com/supply-chain: scanning
+spec:
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "17"
+  params:
+    - name: annotations
+      value:
+        autoscaling.knative.dev/minScale: "1"
+  source:
+    git:
+      ref:
+        branch: main
+      url: https://github.com/d-lorenc/tapathon-accelerator.git

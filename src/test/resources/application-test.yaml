@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:14:////postgres
+    driverClassName: org.testcontainers.jdbc.ContainerDatabaseDriver
+  test.database.replace: NONE
+logging.level:
+  org.hibernate.SQL: DEBUG

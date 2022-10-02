@@ -1,0 +1,35 @@
+version: "3.9"
+
+volumes:
+  postgres:
+    driver: local
+  rabbitmq:
+    driver: local
+
+networks:
+  postgres_go_net:
+    driver: bridge
+  rabbitmq_go_net:
+    driver: bridge
+
+services:
+  postgres:
+    image: postgres:14
+    restart: always
+    environment:
+      - POSTGRES_DB=development
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    ports:
+      - '5432:5432'
+    networks:
+      - postgres_go_net
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - rabbitmq_go_net

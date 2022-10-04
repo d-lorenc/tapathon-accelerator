@@ -95,5 +95,5 @@ engine:
                 - text: "com.example.customerprofile"
                   with: "#packageName"
             - type: RewritePath
-              regex: "src/(?<sourceset>.*)/java/(?<currentpackage>.*/)restservicedb(?<untouchedpath>.*)"
+              regex: "src/(?<sourceset>.*)/java/(?<currentpackage>.*/)customerprofile(?<untouchedpath>.*)"
               rewriteTo: "'src/' + #sourceset + '/java/' + #packageDirectory + '/' + #untouchedpath"
